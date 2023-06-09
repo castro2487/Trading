@@ -1,0 +1,50 @@
+query getUserData($userByUuidInput: ID!) {
+  userByUuid(input: $userByUuidInput) {
+    uuid,
+    # accounts {
+    #   uuid,
+    #   positionGroups {
+    #     name,
+    #     uuid,
+    #     positions {
+    #       averagePrice,
+    #       positionType,
+    #       updatedAmount,
+    #       realAmount,
+    #       uuid,
+    #       instrument
+    #     }
+    #   }
+    # }
+  }
+}
+
+# mutation CreatePositionMutation($createPositionInput: CreatePositionInput!) {
+#   createPosition(input: $createPositionInput) {
+#     # averagePrice,
+#     # positionType,
+#     # realAmount,
+#     # updatedAmount,
+#     uuid
+#   }
+# }
+
+
+# mutation CopyAndMergeGroupMutation($copyAndMergeGroupTargetGroupUuid: ID!, $copyAndMergeGroupOriginGroupUuid: ID!) {
+#   copyAndMergeGroup(targetGroupUuid: $copyAndMergeGroupTargetGroupUuid, originGroupUuid: $copyAndMergeGroupOriginGroupUuid) {
+#     name
+#   }
+# }
+
+# mutation MergeGroupsMutation($mergeGroupsTargetGroupUuid: ID!, $mergeGroupsOriginGroupUuid: ID!) {
+#   mergeGroups(targetGroupUuid: $mergeGroupsTargetGroupUuid, originGroupUuid: $mergeGroupsOriginGroupUuid) {
+#     name
+#   }
+# }
+
+
+# mutation DeleteGroupMutation($deleteGroupInput: ID!) {
+#   deleteGroup(input: $deleteGroupInput) {
+#     uuid
+#   }
+# }

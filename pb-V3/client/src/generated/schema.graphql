@@ -1,0 +1,94 @@
+type Account {
+  uuid: ID!
+  portfolios: [Portfolio]
+}
+
+input CreatePortfolioForAccountInput {
+  accountUuid: ID!
+  positions: [CreatePositionInput]
+  portfolioType: PortfolioType!
+}
+
+input CreatePositionInput {
+  amount: Float!
+  averagePrice: Float!
+  positionType: PositionType!
+  positionsGroupUuid: ID
+  instrument: String!
+  direction: PositionDirection!
+}
+
+type Mutation {
+  createPosition(input: CreatePositionInput!): Position!
+  createAccount(input: ID!): Account!
+  createUser: User!
+  deleteGroup(input: ID!): Portfolio
+  mergeGroups(targetGroupUuid: ID!, originGroupUuid: ID!): Portfolio
+  copyAndMergeGroup(targetGroupUuid: ID!, originGroupUuid: ID!): Portfolio
+  createEmptyGroup(accountUuid: ID!): Portfolio
+  syncPositionsForUser(input: SyncUserAccountsPositionsInput!): Boolean
+}
+
+type Portfolio {
+  uuid: ID!
+  name: String!
+  equity: Float
+  portfolioType: PortfolioType
+  positions: [Position]
+}
+
+input PortfolioInput {
+  name: String!
+  equity: Float
+  portfolioType: PortfolioType
+}
+
+enum PortfolioType {
+  REAL
+  SIMULATED
+  IMPORTED
+  UNAUTHENTICATED
+}
+
+type Position {
+  uuid: ID!
+  amount: Float!
+  averagePrice: Float!
+  positionType: PositionType!
+  instrument: String!
+}
+
+enum PositionDirection {
+  BUY
+  SELL
+}
+
+enum PositionType {
+  OPTION
+  FUTURE
+}
+
+type Query {
+  portfolios: [Portfolio]
+  positions: [Position]
+  userByUuid(input: ID!): User
+  accountByUuid(input: ID!): [Portfolio]
+  accountByPlatformId(input: Int!): Account
+}
+
+input SyncUserAccountsPositionsInput {
+  mainAccountPlatformId: Int
+  accountsWithPositions: [UpdatePositionsForAccountInput]!
+}
+
+input UpdatePositionsForAccountInput {
+  accountPlatformId: Int
+  accountUuid: ID
+  positions: [CreatePositionInput]
+  portfolioType: PortfolioType
+}
+
+type User {
+  uuid: ID!
+  accounts: [Account]
+}

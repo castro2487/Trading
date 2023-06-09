@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    width: 30vw;
+    flex-direction: column;
+    .formContainer {
+        padding: 16px;
+        .form {
+            padding-bottom: 16px;
+        }
+    }
+}
+
+.title {
+}
+
+
+.btns {
+    display: flex;
+
+    .long {
+        color: white;
+        background-color: #32C57A;
+    }
+    .short {
+        color: white;
+        background-color: #EB5757;
+    }
+
+    .delimiter {
+        width: 16px;
+    }
+}
+
+.dropdownControl {
+    background-color: transparent;
+    color: black;
+}
+
+.inputRow {
+    background-color: white;
+    border-radius: 6px;
+    margin-bottom: 16px;
+}
+
+.infoText {
+    margin-top: 16px;
+    font-size: 12px;
+}

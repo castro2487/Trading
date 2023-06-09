@@ -1,0 +1,72 @@
+{
+  "name": "fe",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@apollo/client": "^3.4.6",
+    "@emotion/react": "^11.4.1",
+    "@emotion/styled": "^11.3.0",
+    "@material-table/core": "^4.3.7",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
+    "@mui/material": "^5.0.3",
+    "@reduxjs/toolkit": "^1.5.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "@types/jest": "^24.0.0",
+    "@types/lodash": "^4.14.172",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@types/react-redux": "^7.1.7",
+    "bn.js": "^5.2.0",
+    "copy-files-from-to": "^3.2.0",
+    "date-fns": "^2.23.0",
+    "graphql": "^15.5.1",
+    "js-sha1": "^0.6.0",
+    "lodash": "^4.17.21",
+    "material-table": "^1.69.3",
+    "node-sass": "^6.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "scichart": "^1.4.1633",
+    "typescript": "~4.1.5"
+  },
+  "scripts": {
+    "start": "npm run copyWasm && react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "copyWasm": "copy-files-from-to --config copy-files-from-to.json",
+    "eject": "react-scripts eject",
+    "generate": "graphql-codegen --config codegen.yml",
+    "serve": "serve -s build"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.0.1",
+    "@graphql-codegen/schema-ast": "^2.0.0",
+    "@graphql-codegen/typescript": "2.0.0",
+    "@graphql-codegen/typescript-operations": "2.0.1",
+    "@graphql-codegen/typescript-react-apollo": "3.0.0",
+    "prettier": "^2.3.2",
+    "serve": "^12.0.0"
+  }
+}
