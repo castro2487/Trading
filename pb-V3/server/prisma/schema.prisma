@@ -1,0 +1,65 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["interactiveTransactions"]
+}
+
+enum PortfolioType {
+  REAL
+  SIMULATED
+  IMPORTED
+  UNAUTHENTICATED
+}
+
+enum PositionType {
+  OPTION
+  FUTURE
+}
+
+enum PositionDirection {
+  BUY
+  SELL
+}
+
+model User {
+  uuid              String    @id @default(uuid())
+  platformAccountId Int?      @unique
+  accounts          Account[]
+}
+
+model Position {
+  // timestamps, expiry?
+  instrument    String
+  direction     PositionDirection
+  uuid          String            @id @default(uuid())
+  amount        Float
+  averagePrice  Float
+  positionType  PositionType
+  Portfolio     Portfolio?        @relation(fields: [portfolioUuid], references: [uuid])
+  portfolioUuid String?
+}
+
+model Account {
+  uuid              String      @id @default(uuid())
+  User              User?       @relation(fields: [userUuid], references: [uuid])
+  accountPlatformId Int?        @unique
+  userUuid          String?
+  postfolios        Portfolio[]
+}
+
+model Portfolio {
+  uuid          String        @id @default(uuid())
+  name          String
+  equity        Float
+  portfolioType PortfolioType
+  Account       Account?      @relation(fields: [accountUuid], references: [uuid])
+  accountUuid   String?
+  positions     Position[]
+}

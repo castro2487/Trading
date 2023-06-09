@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+    db:
+        container_name: db
+        image: postgres
+        volumes:
+            - ./postgres-data:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            POSTGRES_DB: pb
+        ports:
+            - "5432:5432"
+            - "5555:5555"
+    client:
+        build: client
+        ports:
+            - "3000:80"
+    server:
+        build: server
+        container_name: server
+        ports:
+            - "4001:4001"
+        depends_on:
+            - db

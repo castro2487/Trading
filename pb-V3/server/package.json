@@ -1,0 +1,33 @@
+{
+  "name": "be",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "ts-node  -r dotenv/config src/index.ts",
+    "start:prod": "node -r dotenv/config  build/index.js",
+    "dev": "ts-node-dev -r dotenv/config src/index.ts",
+    "build": "tsc",
+    "resetdb": "prisma migrate reset",
+    "initprisma": "npx prisma migrate dev --name init",
+    "examplenthmigration": "prisma migrate dev --name added_job_title"
+  },
+  "dependencies": {
+    "@prisma/client": "2.29.0",
+    "apollo-server-express": "^3.1.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "2.0.1",
+    "@graphql-codegen/typescript": "2.0.0",
+    "@graphql-codegen/typescript-resolvers": "2.0.0",
+    "@types/node": "^16.4.13",
+    "prisma": "2.29.0",
+    "ts-node": "^10.2.0",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.3.5"
+  }
+}
